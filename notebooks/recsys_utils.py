@@ -165,3 +165,15 @@ def als_user_recs(row, user_factors, item_factors, seen_csr, k=5):
     top = np.argpartition(-scores, k)[:k]
     top = top[np.argsort(-scores[top])]
     return top, scores[top]
+def city_popularity_recs(users, item_pop, city_codes, seen_csr, k=5):
+    """Top-k most popular unseen items in the user's most frequent city."""
+    recs, cache = {}, {}
+    for u in users:
+        hist = seen_csr.indices[seen_csr.indptr[u]:seen_csr.indptr[u + 1]]
+        c = np.bincount(city_codes[hist]).argmax()
+        if c not in cache:
+            ids = np.where(city_codes == c)[0]
+            cache[c] = ids[np.argsort(-item_pop[ids])[:k + 500]]
+        s = set(hist.tolist())
+        recs[int(u)] = [int(i) for i in cache[c] if i not in s][:k]
+    return recs

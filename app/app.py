@@ -65,6 +65,13 @@ def hybrid(u, k, n_cold):
 
 st.title("🏠 Airbnb Recommendation System")
 st.caption("ALS (Matrix Factorization) + Content-Based cold-start · 279,599 homes, 10 cities")
+with st.expander("ℹ️ How to use this app"):
+    st.markdown("""
+- **User Recommendations:** pick a user (or press *Random User*). The app shows their history,
+  the top-N recommended homes and the hidden next home. Use *Cold-start slots* to mix in new listings.
+- **Similar Homes:** choose a city and a home to find the 10 most similar listings.
+- **Results:** all evaluation tables from the report.
+""")
 tab1, tab2, tab3 = st.tabs(["👤 User Recommendations", "🆕 Similar Homes (cold-start)", "📊 Results"])
 
 # ------------------------------------------------ TAB 1

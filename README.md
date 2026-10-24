@@ -3,7 +3,7 @@
 ALS (Matrix Factorization) + content-based cold-start hybrid.
 279,599 listings, 10 cities, 140,786 users.
 
-**Live demo:** [PASTE STREAMLIT LINK HERE]
+**Live demo:** [airbnb-recommender.streamlit.app](https://airbnb-recommender-j5wepkk4smwywvkgm68dvy.streamlit.app/)
 
 ## Results (10,000 test users, @5)
 
